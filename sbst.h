@@ -40,6 +40,7 @@ private:
 	void postorder(Node* root, int indent);
 	size_t longestCommonPrefix(const std::string& prefix, std::size_t index, std::size_t m_i);
 	Details find(const std::string& prefix, bool searching);
+	void freeTree(Node* curr);
 
 
 	Node* root;

@@ -39,8 +39,15 @@ SBST::SBST(const string& text): root(nullptr), text(text) {
 
 }
 
-SBST::~SBST() {
+void SBST::freeTree(SBST::Node* curr) {
+	if (!curr) return;
+	freeTree(curr->left);
+	freeTree(curr->right);
+	delete curr;
+}
 
+SBST::~SBST() {
+	freeTree(root);
 }
 
 void SBST::print() {
