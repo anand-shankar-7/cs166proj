@@ -24,17 +24,17 @@ SBST::SBST(const string& text): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
 	for (size_t i = 1; i < text.length(); i++) {
-		Node* ptr = root;
-		pair<size_t, size_t> lcps = find(text.substr(i), ptr);
-		size_t llcp = lcps.first;
-		size_t rlcp = lcps.second;
+		Details det = find(text.substr(i), false);
+		size_t llcp = det.llcp;
+		size_t rlcp = det.rlcp;
 
 		Direction dir;
 		if (llcp == rlcp && llcp == 0) dir = UNSET;
 		else if (llcp > rlcp) dir = LEFT;
 		else dir = RIGHT;
 
-		ptr = new Node(i, max(llcp, rlcp), dir);
+		cout << det.location << endl;
+		*(det.location) = new Node(i, max(llcp, rlcp), dir);
 	}
 
 }
@@ -65,43 +65,44 @@ void SBST::postorder(SBST::Node* p, int indent) {
     }
 }
 
-pair<size_t, size_t> SBST::find(const string& prefix) {
+SBST::Details SBST::find(const string& prefix, bool searching) {
 	size_t llcp = 0, rlcp = 0;
-	Node* i = root;
-	while (i) {
-		if (i->m > max(llcp, rlcp)) {
-			i = (i->d == LEFT) ? i->left : i->right;
-		} else if (i->m < max(llcp, rlcp)) {
+	Node** i = &root;
+	while (*i) {
+		if ((*i)->m > max(llcp, rlcp)) {
+			i = ((*i)->d == LEFT) ? &((*i)->left) : &((*i)->right);
+		} else if ((*i)->m < max(llcp, rlcp)) {
 			if (llcp > rlcp) {
-				if (i->d == LEFT) {
-					rlcp = i->m;
+				if ((*i)->d == LEFT) {
+					rlcp = (*i)->m;
 				}
-				i = i->right;
+				i = &((*i)->right);
 			} else /* rlcp > llcp */ {
-				if (i->d == RIGHT) {
-					llcp = i->m;
+				if ((*i)->d == RIGHT) {
+					llcp = (*i)->m;
 				}
-				i = i->left;
+				i = &((*i)->left);
 			}
-		} else if (i->m == llcp && llcp > rlcp && i->d == RIGHT) {
-			i = i->right;
-		} else if (i->m == rlcp && rlcp > llcp && i->d == LEFT) {
-			i = i->left;
+		} else if ((*i)->m == llcp && llcp > rlcp && (*i)->d == RIGHT) {
+			i = &((*i)->right);
+		} else if ((*i)->m == rlcp && rlcp > llcp && (*i)->d == LEFT) {
+			i = &((*i)->left);
 		} else {
-			size_t t = longestCommonPrefix(prefix, i->index, i->m);
+			size_t t = longestCommonPrefix(prefix, (*i)->index, (*i)->m);
 			if (t == prefix.length()) {
-				break;
-			} else if (t + i->index == text.length() || 
-				       prefix[t] > text[t + i->index]) {
-				i = i->right;
+				if (searching) break;
+				i = &((*i)->left);
+			} else if (t + (*i)->index == text.length() || 
+				       prefix[t] > text[t + (*i)->index]) {
+				i = &((*i)->right);
 				rlcp = t;
 			} else {
-				i = i->left;
+				i = &((*i)->left);
 				llcp = t;
 			}
 		}
 	}
-	return {llcp, rlcp};
+	return {i, llcp, rlcp};
 }
 
 // Returns longest common prefix of text[index + m_i:] and prefix[m_i:]
@@ -114,7 +115,6 @@ size_t SBST::longestCommonPrefix(const string& prefix, size_t index, size_t m_i)
 }
 
 SBST::Node* SBST::search(const string& prefix) {
-	Node* loc = root;
-	find(prefix, loc);
-	return loc;
+	Details det = find(prefix, true);
+	return *(det.location);
 }

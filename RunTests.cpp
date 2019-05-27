@@ -3,22 +3,34 @@
 
 using namespace std;
 
+
+
+void printResult(SBST::Node* node, size_t expected) {
+	if (node) {
+		if (node->index == expected) cout << "PASS" << endl;
+		else cout << "FAIL. Expected " << expected << ", got " << node->index << endl;
+	} else {
+		if (expected == 10000) cout << "PASS" << endl;
+		else cout << "FAIL" << endl;
+	}
+}
+
+void doSearch( SBST& tree, string prefix, size_t expected) {
+	printResult(tree.search(prefix), expected);
+}
+
 int main() {
 	SBST tree("CAATCACGGTCGGAC");
 
 	tree.print();
 
-	cout << tree.search("CGGA")->index << endl; // expect 10
-	cout << tree.search("AC")->index << endl; // expect 5 or 12
+	doSearch(tree, "CGGA", 10);
+	doSearch(tree, "AC", 5); // could also be 12
 
-	if (tree.search("CGT") == nullptr) {
-		cout << "PASS" << endl;
-	} else {
-		cout << "FAIL" << endl;
-	}
+	doSearch(tree, "CGT", 10000);
 
-	cout << tree.search("CAATCACGGTCGGAC")->index << endl; // expect 0
-	cout << tree.search("C")->index << endl; // expect 0
-	cout << tree.search("T")->index << endl; // expect 3
+	doSearch(tree, "CAATCACGGTCGGAC", 0);
+	doSearch(tree, "C", 0);
+	doSearch(tree, "T", 3);
 
 }
