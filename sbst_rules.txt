@@ -1,0 +1,41 @@
+Theorem 1: 
+if m_i > max(llcp, rlcp):
+	go in direction d_i from node i
+	don't change llcp or rlcp
+
+Theorem 2:
+if m_i < max(llcp, rlcp) and max(llcp, rlcp) = llcp:
+	branch right from node i.
+	if d_i == right:
+		dont change rlcp
+	else:
+		rlcp = m_i
+	dont change llcp.
+
+elif m_i < max(llcp, rlcp) and max(llcp, rlcp) = rlcp:
+	branch left from node i.
+	if d_i = left: 
+		dont change llcp.
+	else:
+		llcp = m_i
+	dont change rlcp.
+
+Theorem 3: 
+if m_i = llcp > rlcp and d_i = right:
+	branch right. 
+	dont change llcp/rlcp.
+if m_i = rlcp > llcp and d_i = left:
+	branch left.
+	dont change llcp/rlcp.
+
+Theorem 4:
+if m_i = llcp = rlcp OR 
+   (m_i = llcp > rlcp and d_i = left) OR
+   (m_i = rlcp > llcp and d_i = right):
+	must do character comparisons.
+	if search branches right:
+		llcp unchanged
+		rlcp changes.
+	else (search branches left):
+		rlcp unchanged.
+		llcp changes.
