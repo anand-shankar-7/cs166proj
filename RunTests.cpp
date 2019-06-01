@@ -1,5 +1,6 @@
 #include <iostream>
 #include "sbst.h"
+#include "savl.h"
 
 using namespace std;
 
@@ -20,6 +21,10 @@ void doSearch( SBST& tree, string prefix, size_t expected) {
 }
 
 int main() {
+
+  SAVL tree("foo");
+
+  /*
 	{
 		SBST tree("CAATCACGGTCGGAC");
 
@@ -44,6 +49,8 @@ int main() {
 		doSearch(tree, "abcdefghijklmnop", 0);
 		doSearch(tree, "z", kNotFound);
 	}
+
+  */
 
 
 }

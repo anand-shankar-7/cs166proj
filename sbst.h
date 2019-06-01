@@ -4,10 +4,10 @@
 #include <cstddef>
 #include <string>
 
-enum Direction {LEFT = 0, RIGHT, UNSET};
 
 class SBST {
 
+enum Direction {LEFT = 0, RIGHT, UNSET};
 public:
 	struct Node {
 		size_t index;
@@ -48,3 +48,4 @@ private:
 };
 
 #endif
+
