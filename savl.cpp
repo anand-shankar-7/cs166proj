@@ -256,8 +256,10 @@ SAVL::Details SAVL::find(const string& prefix, bool searching) {
 	Node* parent = nullptr;     // sentinel
 	while (*i) {
 		parent = *i;
-		if ((*i)->m > max(llcp, rlcp)) {
-			if ((*i)->d == LEFT) {
+		size_t m = (*i)->m;
+		Direction d = (*i)->d;	
+		if (m > llcp && m > rlcp) {
+			if (d == LEFT) {
 				i = &((*i)->left);
 				childDir = LEFT;
 			} else {
@@ -265,28 +267,28 @@ SAVL::Details SAVL::find(const string& prefix, bool searching) {
 				childDir = RIGHT;
 			}
 
-		} else if ((*i)->m < max(llcp, rlcp)) {
+		} else if (m < llcp || m < rlcp) {
 			if (llcp > rlcp) {
-				if ((*i)->d == LEFT) {
-					rlcp = (*i)->m;
+				if (d == LEFT) {
+					rlcp = m;
 				}
 				i = &((*i)->right);
 				childDir = RIGHT;
 			} else /* rlcp > llcp */ {
-				if ((*i)->d == RIGHT) {
-					llcp = (*i)->m;
+				if (d == RIGHT) {
+					llcp = m;
 				}
 				i = &((*i)->left);
 				childDir = LEFT;
 			}
-		} else if ((*i)->m == llcp && llcp > rlcp && (*i)->d == RIGHT) {
+		} else if (m == llcp && llcp > rlcp && d == RIGHT) {
 			i = &((*i)->right);
 			childDir = RIGHT;
-		} else if ((*i)->m == rlcp && rlcp > llcp && (*i)->d == LEFT) {
+		} else if (m == rlcp && rlcp > llcp && d == LEFT) {
 			i = &((*i)->left);
 			childDir = LEFT;
 		} else {
-			size_t t = longestCommonPrefix(prefix, (*i)->index, (*i)->m);
+			size_t t = longestCommonPrefix(prefix, (*i)->index, m);
 			if (t == prefix.length()) {
 				if (searching) break;
 				i = &((*i)->left);

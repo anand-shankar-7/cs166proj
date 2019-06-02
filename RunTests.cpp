@@ -274,7 +274,6 @@ void smallDictionaryTest() {
   ifstream ifs("popular_words.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
                  (std::istreambuf_iterator<char>()));
-  cout << content << endl;
 
   time_constructor_all(content, false);
 }
