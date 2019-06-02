@@ -1,0 +1,586 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 93.46     57.34    57.34   994938     0.00     0.00  SBST::insertIndex(unsigned long)
+  2.93     59.14     1.80  2995009     0.00     0.00  SAVL::insertIndex(unsigned long)
+  2.53     60.69     1.55       12     0.13     4.91  SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.33     60.89     0.20       80     0.00     0.00  SBST::freeTree(SBST::Node*)
+  0.28     61.06     0.17      160     0.00     0.00  SAVL::freeTree(SAVL::Node*)
+  0.20     61.18     0.12     4403     0.00     0.00  SBST::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.07     61.22     0.04  2995009     0.00     0.00  SAVL::rebalance(SAVL::Node*, int)
+  0.05     61.25     0.03  1506760     0.00     0.00  SAVL::rotateLeft(SAVL::Node*)
+  0.05     61.28     0.03       15     0.00     0.13  SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.03     61.30     0.02     6403     0.00     0.00  SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool)
+  0.03     61.32     0.02        3     0.01     0.01  void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag)
+  0.02     61.33     0.02   962991     0.00     0.00  SAVL::rotateRight(SAVL::Node*)
+  0.02     61.34     0.01   479643     0.00     0.00  std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>)
+  0.02     61.35     0.01      200     0.00     0.00  randomInteger(int, int) [clone .constprop.102]
+  0.01     61.36     0.01                             SAVL::rotateRightLeft(SAVL::Node*)
+  0.00     61.36     0.00   479643     0.00     0.00  std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<unsigned long, false>*)
+  0.00     61.36     0.00    11235     0.00     0.00  SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool)
+  0.00     61.36     0.00     4623     0.00     0.00  SAVL::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.00     61.36     0.00     4410     0.00     0.00  SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00     4402     0.00     0.00  SA::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00     4402     0.00     0.00  SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00      600     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  0.00     61.36     0.00      400     0.00     0.00  randomInteger(int, int) [clone .constprop.103]
+  0.00     61.36     0.00      213     0.00     0.00  SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00      200     0.00     0.00  generateRandomDNAString[abi:cxx11]()
+  0.00     61.36     0.00       44     0.00     0.00  void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00       15     0.00     0.01  SAVL::~SAVL()
+  0.00     61.36     0.00       13     0.00     0.00  SAVL::getName[abi:cxx11]()
+  0.00     61.36     0.00       13     0.00     0.00  SBST::getName[abi:cxx11]()
+  0.00     61.36     0.00       12     0.00     0.00  printResult(unsigned long, unsigned long)
+  0.00     61.36     0.00       12     0.00     0.00  SA::getName[abi:cxx11]()
+  0.00     61.36     0.00       12     0.00     0.00  SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.00     61.36     0.00       12     0.00     0.00  SA::~SA()
+  0.00     61.36     0.00       12     0.00     0.02  SBST::~SBST()
+  0.00     61.36     0.00        8     0.00     0.00  void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        8     0.00     0.00  void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        8     0.00     0.02  void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        8     0.00     0.00  doFindAll(SAVL&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long)
+  0.00     61.36     0.00        4     0.00     0.00  printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        4     0.00     0.00  printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        4     0.00     0.00  void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.00     61.36     0.00        4     0.00     0.28  void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.00     61.36     0.00        4     0.00     9.85  void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  0.00     61.36     0.00        4     0.00     0.00  getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.00     61.36     0.00        2     0.00     0.00  std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long)
+  0.00     61.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z13randomIntegerii
+  0.00     61.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4SAVLC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  0.00     61.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4SBSTC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb
+  0.00     61.36     0.00        1     0.00    15.24  hugeDNATest()
+  0.00     61.36     0.00        1     0.00    15.23  prejudiceTest()
+  0.00     61.36     0.00        1     0.00    15.23  simpleDNATest()
+  0.00     61.36     0.00        1     0.00     0.00  void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        1     0.00     0.00  void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        1     0.00     0.00  getRandomDNAStrings[abi:cxx11](SAVL&)
+  0.00     61.36     0.00        1     0.00     0.01  getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     61.36     0.00        1     0.00     0.00  SBST::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.02% of 61.36 seconds
+
+index % time    self  children    called     name
+                0.13    4.78       1/12          simpleDNATest() [8]
+                0.13    4.78       1/12          prejudiceTest() [6]
+                0.13    4.78       1/12          hugeDNATest() [5]
+                0.13    4.78       1/12          hugeDictionaryTest() [7]
+                1.03   38.23       8/12          void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+[1]     96.0    1.55   57.34      12         SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+               57.34    0.00  994938/994938      SBST::insertIndex(unsigned long) [2]
+-----------------------------------------------
+               57.34    0.00  994938/994938      SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+[2]     93.4   57.34    0.00  994938         SBST::insertIndex(unsigned long) [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     74.5    0.00   45.70                 doTimedTests() [3]
+                0.00   15.24       1/1           hugeDNATest() [5]
+                0.00   15.23       1/1           prejudiceTest() [6]
+                0.00   15.23       1/1           simpleDNATest() [8]
+-----------------------------------------------
+                0.00    9.85       1/4           simpleDNATest() [8]
+                0.00    9.85       1/4           prejudiceTest() [6]
+                0.00    9.85       1/4           hugeDNATest() [5]
+                0.00    9.85       1/4           hugeDictionaryTest() [7]
+[4]     64.2    0.00   39.39       4         void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                1.03   38.23       8/12          SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+                0.00    0.13       8/12          SBST::~SBST() [14]
+                0.00    0.00       4/13          SBST::getName[abi:cxx11]() [51]
+-----------------------------------------------
+                0.00   15.24       1/1           doTimedTests() [3]
+[5]     24.8    0.00   15.24       1         hugeDNATest() [5]
+                0.00    9.85       1/4           void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                0.13    4.78       1/12          SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+                0.00    0.28       1/4           void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.00    0.13       1/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.04       2/8           void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.02       1/12          SBST::~SBST() [14]
+                0.00    0.01       1/15          SAVL::~SAVL() [16]
+                0.00    0.01       1/1           getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [27]
+                0.01    0.00       1/3           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag) [23]
+                0.00    0.00       2/8           void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00       2/8           void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+                0.00    0.00       1/4           printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [58]
+                0.00    0.00       1/4           void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       1/12          SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+                0.00    0.00       1/1           getRandomDNAStrings[abi:cxx11](SAVL&) [66]
+                0.00    0.00       1/4           printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [57]
+                0.00    0.00       1/12          SA::~SA() [55]
+-----------------------------------------------
+                0.00   15.23       1/1           doTimedTests() [3]
+[6]     24.8    0.00   15.23       1         prejudiceTest() [6]
+                0.00    9.85       1/4           void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                0.13    4.78       1/12          SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+                0.00    0.28       1/4           void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.00    0.13       1/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.04       2/8           void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.02       1/12          SBST::~SBST() [14]
+                0.00    0.01       1/15          SAVL::~SAVL() [16]
+                0.01    0.00       1/3           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag) [23]
+                0.00    0.00       2/8           void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00       2/4           getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [60]
+                0.00    0.00       2/8           void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+                0.00    0.00       1/4           printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [58]
+                0.00    0.00       1/4           void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       1/12          SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+                0.00    0.00       1/4           printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [57]
+                0.00    0.00       1/12          SA::~SA() [55]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]     24.8    0.00   15.23                 hugeDictionaryTest() [7]
+                0.00    9.85       1/4           void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                0.13    4.78       1/12          SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+                0.00    0.28       1/4           void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.00    0.13       1/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.04       2/8           void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.02       1/12          SBST::~SBST() [14]
+                0.00    0.01       1/15          SAVL::~SAVL() [16]
+                0.01    0.00       1/3           void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag) [23]
+                0.00    0.00       2/8           void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00       2/4           getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [60]
+                0.00    0.00       2/8           void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+                0.00    0.00       1/4           printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [58]
+                0.00    0.00       1/4           void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       1/12          SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+                0.00    0.00       1/4           printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [57]
+                0.00    0.00       1/12          SA::~SA() [55]
+-----------------------------------------------
+                0.00   15.23       1/1           doTimedTests() [3]
+[8]     24.8    0.00   15.23       1         simpleDNATest() [8]
+                0.00    9.85       1/4           void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                0.13    4.78       1/12          SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [1]
+                0.00    0.28       1/4           void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.00    0.13       1/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.04       2/8           void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.02       1/12          SBST::~SBST() [14]
+                0.00    0.01       1/15          SAVL::~SAVL() [16]
+                0.00    0.00       2/8           void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00       1/1           void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+                0.00    0.00       2/8           void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+                0.00    0.00       1/4           printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [58]
+                0.00    0.00       1/4           void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       1/12          SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+                0.00    0.00       1/1           void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [65]
+                0.00    0.00       1/12          SA::~SA() [55]
+                0.00    0.00       1/4           printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [57]
+-----------------------------------------------
+                0.00    0.13       1/15          simpleDNATest() [8]
+                0.00    0.13       1/15          prejudiceTest() [6]
+                0.00    0.13       1/15          hugeDNATest() [5]
+                0.00    0.13       1/15          hugeDictionaryTest() [7]
+                0.01    0.38       3/15          doCorrectnessTests() [12]
+                0.02    1.01       8/15          void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+[9]      3.1    0.03    1.89      15         SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                1.80    0.09 2995009/2995009     SAVL::insertIndex(unsigned long) [10]
+-----------------------------------------------
+                1.80    0.09 2995009/2995009     SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+[10]     3.1    1.80    0.09 2995009         SAVL::insertIndex(unsigned long) [10]
+                0.04    0.05 2995009/2995009     SAVL::rebalance(SAVL::Node*, int) [20]
+-----------------------------------------------
+                0.00    0.28       1/4           simpleDNATest() [8]
+                0.00    0.28       1/4           prejudiceTest() [6]
+                0.00    0.28       1/4           hugeDNATest() [5]
+                0.00    0.28       1/4           hugeDictionaryTest() [7]
+[11]     1.8    0.00    1.11       4         void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.02    1.01       8/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.09       8/15          SAVL::~SAVL() [16]
+                0.00    0.00       4/13          SAVL::getName[abi:cxx11]() [50]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     0.7    0.00    0.42                 doCorrectnessTests() [12]
+                0.01    0.38       3/15          SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [9]
+                0.00    0.03       3/15          SAVL::~SAVL() [16]
+                0.00    0.00       8/8           doFindAll(SAVL&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [34]
+                0.00    0.00      12/213         SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [47]
+                0.00    0.00      12/12          printResult(unsigned long, unsigned long) [52]
+-----------------------------------------------
+                             1062356             SBST::freeTree(SBST::Node*) [13]
+                0.20    0.00      80/80          SBST::~SBST() [14]
+[13]     0.3    0.20    0.00      80+1062356 SBST::freeTree(SBST::Node*) [13]
+                             1062356             SBST::freeTree(SBST::Node*) [13]
+-----------------------------------------------
+                0.00    0.02       1/12          simpleDNATest() [8]
+                0.00    0.02       1/12          prejudiceTest() [6]
+                0.00    0.02       1/12          hugeDNATest() [5]
+                0.00    0.02       1/12          hugeDictionaryTest() [7]
+                0.00    0.13       8/12          void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+[14]     0.3    0.00    0.20      12         SBST::~SBST() [14]
+                0.20    0.00      80/80          SBST::freeTree(SBST::Node*) [13]
+-----------------------------------------------
+                             1106976             SAVL::freeTree(SAVL::Node*) [15]
+                0.17    0.00     160/160         SAVL::~SAVL() [16]
+[15]     0.3    0.17    0.00     160+1106976 SAVL::freeTree(SAVL::Node*) [15]
+                             1106976             SAVL::freeTree(SAVL::Node*) [15]
+-----------------------------------------------
+                0.00    0.01       1/15          simpleDNATest() [8]
+                0.00    0.01       1/15          prejudiceTest() [6]
+                0.00    0.01       1/15          hugeDNATest() [5]
+                0.00    0.01       1/15          hugeDictionaryTest() [7]
+                0.00    0.03       3/15          doCorrectnessTests() [12]
+                0.00    0.09       8/15          void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+[16]     0.3    0.00    0.17      15         SAVL::~SAVL() [16]
+                0.17    0.00     160/160         SAVL::freeTree(SAVL::Node*) [15]
+-----------------------------------------------
+                0.00    0.14    4402/4402        void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+[17]     0.2    0.00    0.14    4402         SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+                0.12    0.00    4402/4403        SBST::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [19]
+                0.02    0.00    6403/6403        SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool) [22]
+                0.00    0.00    8765/479643      std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+-----------------------------------------------
+                0.00    0.04       2/8           simpleDNATest() [8]
+                0.00    0.04       2/8           prejudiceTest() [6]
+                0.00    0.04       2/8           hugeDNATest() [5]
+                0.00    0.04       2/8           hugeDictionaryTest() [7]
+[18]     0.2    0.00    0.14       8         void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+                0.00    0.14    4402/4402        SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+                0.00    0.00       8/13          SBST::getName[abi:cxx11]() [51]
+-----------------------------------------------
+                0.00    0.00       1/4403        SBST::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [33]
+                0.12    0.00    4402/4403        SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+[19]     0.2    0.12    0.00    4403         SBST::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [19]
+-----------------------------------------------
+                0.04    0.05 2995009/2995009     SAVL::insertIndex(unsigned long) [10]
+[20]     0.1    0.04    0.05 2995009         SAVL::rebalance(SAVL::Node*, int) [20]
+                0.03    0.00 1506760/1506760     SAVL::rotateLeft(SAVL::Node*) [21]
+                0.02    0.00  962991/962991      SAVL::rotateRight(SAVL::Node*) [24]
+-----------------------------------------------
+                0.03    0.00 1506760/1506760     SAVL::rebalance(SAVL::Node*, int) [20]
+[21]     0.0    0.03    0.00 1506760         SAVL::rotateLeft(SAVL::Node*) [21]
+-----------------------------------------------
+                              242430             SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool) [22]
+                0.02    0.00    6403/6403        SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+[22]     0.0    0.02    0.00    6403+242430  SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool) [22]
+                0.00    0.00  231043/479643      std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+                              242430             SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool) [22]
+-----------------------------------------------
+                0.01    0.00       1/3           prejudiceTest() [6]
+                0.01    0.00       1/3           hugeDNATest() [5]
+                0.01    0.00       1/3           hugeDictionaryTest() [7]
+[23]     0.0    0.02    0.00       3         void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag) [23]
+-----------------------------------------------
+                0.02    0.00  962991/962991      SAVL::rebalance(SAVL::Node*, int) [20]
+[24]     0.0    0.02    0.00  962991         SAVL::rotateRight(SAVL::Node*) [24]
+-----------------------------------------------
+                0.00    0.00    8765/479643      SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [17]
+                0.00    0.00   11169/479643      SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+                0.00    0.00  228666/479643      SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [31]
+                0.00    0.00  231043/479643      SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool) [22]
+[25]     0.0    0.01    0.00  479643         std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+                0.00    0.00  479643/479643      std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<unsigned long, false>*) [42]
+-----------------------------------------------
+                0.01    0.00     200/200         getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [27]
+[26]     0.0    0.01    0.00     200         randomInteger(int, int) [clone .constprop.102] [26]
+                0.00    0.00     200/600         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [45]
+-----------------------------------------------
+                0.00    0.01       1/1           hugeDNATest() [5]
+[27]     0.0    0.00    0.01       1         getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [27]
+                0.01    0.00     200/200         randomInteger(int, int) [clone .constprop.102] [26]
+                0.00    0.00     200/400         randomInteger(int, int) [clone .constprop.103] [46]
+                0.00    0.00       1/2           std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long) [61]
+-----------------------------------------------
+                0.00    0.00       8/4410        doFindAll(SAVL&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [34]
+                0.00    0.00    4402/4410        void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+[28]     0.0    0.00    0.01    4410         SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+                0.00    0.00   11235/11235       SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [31]
+                0.00    0.00   11169/479643      std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+                0.00    0.00    4410/4623        SAVL::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [43]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     0.0    0.01    0.00                 SAVL::rotateRightLeft(SAVL::Node*) [29]
+-----------------------------------------------
+                0.00    0.00       2/8           simpleDNATest() [8]
+                0.00    0.00       2/8           prejudiceTest() [6]
+                0.00    0.00       2/8           hugeDNATest() [5]
+                0.00    0.00       2/8           hugeDictionaryTest() [7]
+[30]     0.0    0.00    0.00       8         void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+                0.00    0.00    4402/4410        SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+                0.00    0.00       8/13          SAVL::getName[abi:cxx11]() [50]
+-----------------------------------------------
+                              228785             SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [31]
+                0.00    0.00   11235/11235       SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+[31]     0.0    0.00    0.00   11235+228785  SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [31]
+                0.00    0.00  228666/479643      std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+                              228785             SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [31]
+-----------------------------------------------
+                0.00    0.00       1/1           simpleDNATest() [8]
+[32]     0.0    0.00    0.00       1         void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+                0.00    0.00       1/1           SBST::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [33]
+                0.00    0.00       1/13          SBST::getName[abi:cxx11]() [51]
+-----------------------------------------------
+                0.00    0.00       1/1           void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+[33]     0.0    0.00    0.00       1         SBST::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [33]
+                0.00    0.00       1/4403        SBST::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [19]
+-----------------------------------------------
+                0.00    0.00       8/8           doCorrectnessTests() [12]
+[34]     0.0    0.00    0.00       8         doFindAll(SAVL&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [34]
+                0.00    0.00       8/4410        SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+-----------------------------------------------
+                0.00    0.00  479643/479643      std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>) [25]
+[42]     0.0    0.00    0.00  479643         std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<unsigned long, false>*) [42]
+-----------------------------------------------
+                0.00    0.00     213/4623        SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [47]
+                0.00    0.00    4410/4623        SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28]
+[43]     0.0    0.00    0.00    4623         SAVL::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [43]
+-----------------------------------------------
+                0.00    0.00    4402/4402        void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+[44]     0.0    0.00    0.00    4402         SA::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [44]
+-----------------------------------------------
+                0.00    0.00     200/600         randomInteger(int, int) [clone .constprop.102] [26]
+                0.00    0.00     400/600         randomInteger(int, int) [clone .constprop.103] [46]
+[45]     0.0    0.00    0.00     600         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [45]
+-----------------------------------------------
+                0.00    0.00     200/400         getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [27]
+                0.00    0.00     200/400         generateRandomDNAString[abi:cxx11]() [48]
+[46]     0.0    0.00    0.00     400         randomInteger(int, int) [clone .constprop.103] [46]
+                0.00    0.00     400/600         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [45]
+-----------------------------------------------
+                0.00    0.00       1/213         void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [65]
+                0.00    0.00      12/213         doCorrectnessTests() [12]
+                0.00    0.00     200/213         getRandomDNAStrings[abi:cxx11](SAVL&) [66]
+[47]     0.0    0.00    0.00     213         SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [47]
+                0.00    0.00     213/4623        SAVL::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [43]
+-----------------------------------------------
+                0.00    0.00     200/200         getRandomDNAStrings[abi:cxx11](SAVL&) [66]
+[48]     0.0    0.00    0.00     200         generateRandomDNAString[abi:cxx11]() [48]
+                0.00    0.00     200/400         randomInteger(int, int) [clone .constprop.103] [46]
+-----------------------------------------------
+                0.00    0.00      44/44          getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [60]
+[49]     0.0    0.00    0.00      44         void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [49]
+-----------------------------------------------
+                0.00    0.00       1/13          void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [65]
+                0.00    0.00       4/13          void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [11]
+                0.00    0.00       8/13          void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [30]
+[50]     0.0    0.00    0.00      13         SAVL::getName[abi:cxx11]() [50]
+-----------------------------------------------
+                0.00    0.00       1/13          void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [32]
+                0.00    0.00       4/13          void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [4]
+                0.00    0.00       8/13          void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [18]
+[51]     0.0    0.00    0.00      13         SBST::getName[abi:cxx11]() [51]
+-----------------------------------------------
+                0.00    0.00      12/12          doCorrectnessTests() [12]
+[52]     0.0    0.00    0.00      12         printResult(unsigned long, unsigned long) [52]
+-----------------------------------------------
+                0.00    0.00       4/12          void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       8/12          void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+[53]     0.0    0.00    0.00      12         SA::getName[abi:cxx11]() [53]
+-----------------------------------------------
+                0.00    0.00       1/12          simpleDNATest() [8]
+                0.00    0.00       1/12          prejudiceTest() [6]
+                0.00    0.00       1/12          hugeDNATest() [5]
+                0.00    0.00       1/12          hugeDictionaryTest() [7]
+                0.00    0.00       8/12          void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+[54]     0.0    0.00    0.00      12         SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+-----------------------------------------------
+                0.00    0.00       1/12          simpleDNATest() [8]
+                0.00    0.00       1/12          prejudiceTest() [6]
+                0.00    0.00       1/12          hugeDNATest() [5]
+                0.00    0.00       1/12          hugeDictionaryTest() [7]
+                0.00    0.00       8/12          void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+[55]     0.0    0.00    0.00      12         SA::~SA() [55]
+-----------------------------------------------
+                0.00    0.00       2/8           simpleDNATest() [8]
+                0.00    0.00       2/8           prejudiceTest() [6]
+                0.00    0.00       2/8           hugeDNATest() [5]
+                0.00    0.00       2/8           hugeDictionaryTest() [7]
+[56]     0.0    0.00    0.00       8         void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [56]
+                0.00    0.00    4402/4402        SA::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [44]
+                0.00    0.00       8/12          SA::getName[abi:cxx11]() [53]
+-----------------------------------------------
+                0.00    0.00       1/4           simpleDNATest() [8]
+                0.00    0.00       1/4           prejudiceTest() [6]
+                0.00    0.00       1/4           hugeDNATest() [5]
+                0.00    0.00       1/4           hugeDictionaryTest() [7]
+[57]     0.0    0.00    0.00       4         printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [57]
+-----------------------------------------------
+                0.00    0.00       1/4           simpleDNATest() [8]
+                0.00    0.00       1/4           prejudiceTest() [6]
+                0.00    0.00       1/4           hugeDNATest() [5]
+                0.00    0.00       1/4           hugeDictionaryTest() [7]
+[58]     0.0    0.00    0.00       4         printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [58]
+-----------------------------------------------
+                0.00    0.00       1/4           simpleDNATest() [8]
+                0.00    0.00       1/4           prejudiceTest() [6]
+                0.00    0.00       1/4           hugeDNATest() [5]
+                0.00    0.00       1/4           hugeDictionaryTest() [7]
+[59]     0.0    0.00    0.00       4         void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [59]
+                0.00    0.00       8/12          SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [54]
+                0.00    0.00       8/12          SA::~SA() [55]
+                0.00    0.00       4/12          SA::getName[abi:cxx11]() [53]
+-----------------------------------------------
+                0.00    0.00       2/4           prejudiceTest() [6]
+                0.00    0.00       2/4           hugeDictionaryTest() [7]
+[60]     0.0    0.00    0.00       4         getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [60]
+                0.00    0.00      44/44          void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [49]
+-----------------------------------------------
+                0.00    0.00       1/2           getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [27]
+                0.00    0.00       1/2           getRandomDNAStrings[abi:cxx11](SAVL&) [66]
+[61]     0.0    0.00    0.00       2         std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long) [61]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [92]
+[62]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z13randomIntegerii [62]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [92]
+[63]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4SAVLC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb [63]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [92]
+[64]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4SBSTC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb [64]
+-----------------------------------------------
+                0.00    0.00       1/1           simpleDNATest() [8]
+[65]     0.0    0.00    0.00       1         void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [65]
+                0.00    0.00       1/13          SAVL::getName[abi:cxx11]() [50]
+                0.00    0.00       1/213         SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [47]
+-----------------------------------------------
+                0.00    0.00       1/1           hugeDNATest() [5]
+[66]     0.0    0.00    0.00       1         getRandomDNAStrings[abi:cxx11](SAVL&) [66]
+                0.00    0.00     200/200         generateRandomDNAString[abi:cxx11]() [48]
+                0.00    0.00     200/213         SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [47]
+                0.00    0.00       1/2           std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long) [61]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [62] _GLOBAL__sub_I__Z13randomIntegerii (RunTests.cpp) [60] getFileContentsOf(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [20] SAVL::rebalance(SAVL::Node*, int)
+  [63] _GLOBAL__sub_I__ZN4SAVLC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb (savl.cpp) [66] getRandomDNAStrings[abi:cxx11](SAVL&) [9] SAVL::SAVL(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  [64] _GLOBAL__sub_I__ZN4SBSTC2ERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEb (sbst.cpp) [27] getGoodSequencesFrom(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [16] SAVL::~SAVL()
+   [5] hugeDNATest()          [48] generateRandomDNAString[abi:cxx11]() [2] SBST::insertIndex(unsigned long)
+  [52] printResult(unsigned long, unsigned long) [34] doFindAll(SAVL&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, unsigned long) [17] SBST::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [57] printEndTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [44] SA::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [22] SBST::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SBST::Node*, SBST::Direction, bool)
+  [56] void time_findAll<SA>(SA&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [53] SA::getName[abi:cxx11]() [19] SBST::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  [30] void time_findAll<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [54] SA::SA(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [51] SBST::getName[abi:cxx11]()
+  [18] void time_findAll<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [55] SA::~SA() [13] SBST::freeTree(SBST::Node*)
+   [6] prejudiceTest()        [21] SAVL::rotateLeft(SAVL::Node*) [33] SBST::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [26] randomInteger(int, int) [clone .constprop.102] (RunTests.cpp) [10] SAVL::insertIndex(unsigned long) [1] SBST::SBST(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool)
+  [46] randomInteger(int, int) [clone .constprop.103] (RunTests.cpp) [24] SAVL::rotateRight(SAVL::Node*) [14] SBST::~SBST()
+   [8] simpleDNATest()        [29] SAVL::rotateRightLeft(SAVL::Node*) [42] std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<unsigned long, false>*)
+  [58] printBeginTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [28] SAVL::findAllOccurrences(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [25] std::pair<std::__detail::_Node_iterator<unsigned long, true, false>, bool> std::_Hashtable<unsigned long, unsigned long, std::allocator<unsigned long>, std::__detail::_Identity, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, true, true> >::_M_insert<unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > >(unsigned long const&, std::__detail::_AllocNode<std::allocator<std::__detail::_Hash_node<unsigned long, false> > > const&, std::integral_constant<bool, true>)
+  [65] void time_findIndex<SAVL>(SAVL&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [31] SAVL::findAllOccurrences(unsigned long, std::unordered_set<unsigned long, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<unsigned long> >&, SAVL::Node*, SAVL::Direction, bool) [45] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  [32] void time_findIndex<SBST>(SBST&, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [43] SAVL::find(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [49] void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_emplace_back_aux<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [59] void time_constructor<SA>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [50] SAVL::getName[abi:cxx11]() [61] std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::reserve(unsigned long)
+  [11] void time_constructor<SAVL>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [15] SAVL::freeTree(SAVL::Node*) [23] void std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_construct<std::istreambuf_iterator<char, std::char_traits<char> > >(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::input_iterator_tag)
+   [4] void time_constructor<SBST>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [47] SAVL::findIndex(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
