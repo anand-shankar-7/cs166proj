@@ -28,6 +28,16 @@ SAVL::SAVL(const string& text, bool allWords): root(nullptr), text(text) {
 
 }
 
+size_t SAVL::findIndex(const std::string& prefix) {
+	Node* found = search(prefix);
+	if (found) return found->index;
+	return -1;
+}
+
+std::string SAVL::getName() {
+  return "SAVL";
+}
+
 vector<size_t> SAVL::getIndices(const string& text) {
         vector<size_t> indices;
         for (size_t i = 0; i < text.length() - 1; i++) {

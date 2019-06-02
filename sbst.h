@@ -10,6 +10,17 @@ class SBST {
 
 enum Direction {LEFT = 0, RIGHT, UNSET};
 public:
+	SBST(const std::string& text, bool onlyWords = false);
+	~SBST();
+	
+	std::unordered_set<size_t> findAllOccurrences(const std::string& text);
+  	std::string getName();
+	void print();
+
+	size_t findIndex(const std::string& prefix);
+
+private:
+
 	struct Node {
 		size_t index;
 		size_t m;
@@ -22,22 +33,13 @@ public:
 			index(index), m(m), d(d), left(left), right(right) {}
 	};
 
-
-	SBST(const std::string& text, bool onlyWords = false);
-	~SBST();
-	Node* search(const std::string& prefix);
-	std::unordered_set<size_t> findAllOccurrences(const std::string& text);
-
-	void print();
-
-private:
-
-
 	struct Details {
 		Node** location;
 		size_t llcp;
 		size_t rlcp;
 	};
+
+	Node* search(const std::string& prefix);
 
 	void insertIndex(std::size_t index);
 	void postorder(Node* root, int indent);
