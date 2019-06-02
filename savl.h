@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <string>
+#include <unordered_set>
 
 class SAVL {
 
@@ -28,6 +29,7 @@ public:
         SAVL(const std::string& text);
         ~SAVL();
         Node* search(const std::string& prefix);
+        std::unordered_set<size_t> findAllOccurrences(const std::string& text);
 
         void print();
 
@@ -49,9 +51,10 @@ private:
         void rebalance(Node* node, int balance);
         Node* rotateLeft(Node* node);
         Node* rotateRight(Node* node);
-        // Node* rotateLeftRight(Node* node);
-        // Node* rotateRightLeft(Node* node);
-
+        Node* rotateLeftRight(Node* node);
+        Node* rotateRightLeft(Node* node);
+        void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
+                                SAVL::Node* curr, Direction sideFromFound, bool matchAll);
 
 
         Node* root;

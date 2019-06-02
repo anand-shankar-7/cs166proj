@@ -99,6 +99,7 @@ SBST::Details SBST::find(const string& prefix, bool searching) {
 			if (t == prefix.length()) {
 				if (searching) break;
 				i = &((*i)->left);
+				llcp = t;
 			} else if (t + (*i)->index == text.length() || 
 				       prefix[t] > text[t + (*i)->index]) {
 				i = &((*i)->right);
@@ -124,4 +125,34 @@ size_t SBST::longestCommonPrefix(const string& prefix, size_t index, size_t m_i)
 SBST::Node* SBST::search(const string& prefix) {
 	Details det = find(prefix, true);
 	return *(det.location);
+}
+
+// sideFromFound: LEFT if curr is in left subtree of search(text)
+void SBST::findAllOccurrences(size_t textLen, 
+	                          std::unordered_set<size_t>& result,
+	                          SBST::Node* curr,
+	                          Direction sideFromFound,
+	                          bool matchAll) {
+	if (!curr) return;
+
+	if (matchAll || (curr->m >= textLen && curr->d == sideFromFound)) {  // I am an occurrence.
+		findAllOccurrences(textLen, result, curr->left, sideFromFound, matchAll || sideFromFound == RIGHT);
+		result.insert(curr->index);
+		findAllOccurrences(textLen, result, curr->right, sideFromFound, matchAll || sideFromFound == LEFT);
+	} else if (sideFromFound == LEFT) {
+		findAllOccurrences(textLen, result, curr->right, sideFromFound, false);
+	} else {
+		findAllOccurrences(textLen, result, curr->left, sideFromFound, false);
+	}
+}
+
+std::unordered_set<size_t> SBST::findAllOccurrences(const string& text) {
+	std::unordered_set<size_t> result;
+	Node* first = search(text);
+	if (first) {
+		result.insert(first->index);
+		findAllOccurrences(text.size(), result, first->left, LEFT, false);
+		findAllOccurrences(text.size(), result, first->right, RIGHT, false);
+	}
+	return result;
 }

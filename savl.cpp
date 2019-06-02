@@ -28,46 +28,108 @@ SAVL::SAVL(const string& text): root(nullptr), text(text) {
 	// Node* four = new Node(3, 0, UNSET, five, ten);
 	// root = new Node(0, 0, UNSET, two, four);
 
-	Node* bottom = new Node(2, 4, LEFT);
-	Node* mid =    new Node(1, 2, LEFT, bottom, nullptr);
-	Node* top =    new Node(0, 0, UNSET, mid, nullptr);
+	// fourteen->parent = six;
+	// six->parent = three;
+	// fifteen->parent = three;
+	// three->parent = two;
+	// two->parent = root;
+	// root->parent = nullptr;
+	// thirteen->parent = twelve;
+	// twelve->parent = eight;
+	// nine->parent = eight;
+	// eight->parent = seven;
+	// eleven->parent = seven;
+	// seven->parent = five;
+	// five->parent = four;
+	// ten->parent = four;
+	// four->parent = root;
 
-	root = top;
 
-	mid->parent = top;
-	bottom->parent = mid;
-	bottom->balance = 0;
-	mid->balance = 1;
-	top->balance = 2;
 
-	rebalance(mid, 1);
+	// Node* bottom = new Node(2, 4, RIGHT);
+	// Node* mid =    new Node(1, 2, LEFT, nullptr, bottom);
+	// Node* top =    new Node(0, 0, UNSET, mid, nullptr);
+
+	// root = top;
+
+	// mid->parent = top;
+	// bottom->parent = mid;
+	// Bal factors BEFORE ROTATION
+	// bottom->balance = 0;
+	// mid->balance = 0;
+	// top->balance = 1;
+
+	// rebalance(mid, -1);
+
+	// cout << "FOO" << endl;
 
 	// cout << "before rotate left" << endl;
 	// rotateRight(root);
 	// cout << "after rotate left" << endl;
 
-	// root = new Node(0, 0, UNSET);
+	root = new Node(0, 0, UNSET);
 
-	// for (size_t i = 1; i < text.length(); i++) {
-	// 	Details det = find(text.substr(i), false);
-	// 	size_t llcp = det.llcp;
-	// 	size_t rlcp = det.rlcp;
+	for (size_t i = 1; i < text.length(); i++) {
+		// cout << "------- i = " << i << "---------" << endl;
+		// print();
+		// cout << "---------------------------" << endl;
+		Details det = find(text.substr(i), false);
+		size_t llcp = det.llcp;
+		size_t rlcp = det.rlcp;
 
-	// 	Direction dir;
-	// 	if (llcp == rlcp && llcp == 0) dir = UNSET;
-	// 	else if (llcp > rlcp) dir = LEFT;
-	// 	else dir = RIGHT;
+		Direction dir;
+		if (llcp == rlcp && llcp == 0) dir = UNSET;
+		else if (llcp > rlcp) dir = LEFT;
+		else dir = RIGHT;
 
-	// 	cout << det.location << endl;
-	// 	*(det.location) = new Node(i, max(llcp, rlcp), dir, det.parent);
+		cout << det.location << endl;
+		*(det.location) = new Node(i, max(llcp, rlcp), dir, nullptr, nullptr, det.parent);
 
-	// 	if (det.childDir == LEFT) {
-	// 		rebalance(det.parent, 1);
-	// 	} else {
-	// 		rebalance(det.parent, -1);
-	// 	}
-	// }
+		if (det.childDir == LEFT) {
+			rebalance(det.parent, 1);
+		} else {
+			rebalance(det.parent, -1);
+		}
+	}
 
+}
+
+SAVL::Node* SAVL::rotateLeftRight(SAVL::Node* node) {
+	node->left = rotateLeft(node->left);
+	Node* right = rotateRight(node);
+
+	if (right && right->balance == 0) {
+		node->balance = 0;
+		right->left->balance = 0;
+	} else if (right->balance == -1) {
+		node->balance = 0;
+		right->left->balance = 1;
+	} else {
+		node->balance = -1;
+		right->left->balance = 0;
+	}
+	right->balance = 0;
+
+	return right;
+}
+
+SAVL::Node* SAVL::rotateRightLeft(SAVL::Node* node) {
+	node->right = rotateRight(node->right);
+	Node* left = rotateLeft(node);
+
+	if (left && left->balance == 0) {
+		node->balance = 0;
+		left->right->balance = 0;
+	} else if (left->balance == 1) {
+		node->balance = 0;
+		left->right->balance = -1;
+	} else {
+		node->balance = 1;
+		left->right->balance = 0;
+	}
+	left->balance = 0;
+
+	return left;
 }
 
 SAVL::Node* SAVL::rotateRight(SAVL::Node* node) {
@@ -88,8 +150,9 @@ SAVL::Node* SAVL::rotateRight(SAVL::Node* node) {
 	} else {
 		parent->right = left;
 	}
-	left->balance--;
-	node->balance = -1 * left->balance;
+
+	// left->balance--;
+	// node->balance = -1 * left->balance;
 
 	if (node->d == LEFT && left->d == LEFT) {
 		size_t nodeM = node->m;
@@ -130,8 +193,8 @@ SAVL::Node* SAVL::rotateLeft(SAVL::Node* node) {
 		parent->left = right;
 	}
 
-	right->balance++;
-	node->balance = -1 * right->balance;
+	// right->balance++;
+	// node->balance = -1 * right->balance;
 
 	if (node->d == UNSET && right->d == RIGHT) {
 		std::swap(node->m, right->m);
@@ -165,15 +228,19 @@ void SAVL::rebalance(SAVL::Node* node, int balance) {
 		} else if (balance == 2) {
 			if (node->left && node->left->balance == 1) {
 				rotateRight(node);
+				node->parent->balance = 0;
+				node->balance = 0;
 			} else {
-				// rotateLeftRight(node);
+				rotateLeftRight(node);
 			}
 			return;
 		} else if (balance == -2) {
 			if (node->right && node->right->balance == -1) {
 				rotateLeft(node);
+				node->parent->balance = 0;
+				node->balance = 0;
 			} else {
-				// rotateRightLeft(node);
+				rotateRightLeft(node);
 			}
 			return;
 		}
@@ -211,7 +278,7 @@ void SAVL::postorder(SAVL::Node* p, int indent) {
             std::cout << std::setw(indent) << ' ';
         }
         if (p->right) std::cout<<" /\n" << std::setw(indent) << ' ';
-        std::cout<< p->index << "\n ";
+        std::cout<< p->index << ", " << p->balance << "\n ";
         if(p->left) {
         	if (p->left->parent != p) cout << "ERROR" << endl;
             std::cout << std::setw(indent) << ' ' <<" \\\n";
@@ -261,6 +328,7 @@ SAVL::Details SAVL::find(const string& prefix, bool searching) {
 			if (t == prefix.length()) {
 				if (searching) break;
 				i = &((*i)->left);
+				llcp = t;
 				childDir = LEFT;
 			} else if (t + (*i)->index == text.length() || 
 				       prefix[t] > text[t + (*i)->index]) {
@@ -289,4 +357,34 @@ size_t SAVL::longestCommonPrefix(const string& prefix, size_t index, size_t m_i)
 SAVL::Node* SAVL::search(const string& prefix) {
 	Details det = find(prefix, true);
 	return *(det.location);
+}
+
+// sideFromFound: LEFT if curr is in left subtree of search(text)
+void SAVL::findAllOccurrences(size_t textLen, 
+	                          std::unordered_set<size_t>& result,
+	                          SAVL::Node* curr,
+	                          Direction sideFromFound,
+	                          bool matchAll) {
+	if (!curr) return;
+
+	if (matchAll || (curr->m >= textLen && curr->d == sideFromFound)) {  // I am an occurrence.
+		findAllOccurrences(textLen, result, curr->left, sideFromFound, matchAll || sideFromFound == RIGHT);
+		result.insert(curr->index);
+		findAllOccurrences(textLen, result, curr->right, sideFromFound, matchAll || sideFromFound == LEFT);
+	} else if (sideFromFound == LEFT) {
+		findAllOccurrences(textLen, result, curr->right, sideFromFound, false);
+	} else {
+		findAllOccurrences(textLen, result, curr->left, sideFromFound, false);
+	}
+}
+
+std::unordered_set<size_t> SAVL::findAllOccurrences(const string& text) {
+	std::unordered_set<size_t> result;
+	Node* first = search(text);
+	if (first) {
+		result.insert(first->index);
+		findAllOccurrences(text.size(), result, first->left, LEFT, false);
+		findAllOccurrences(text.size(), result, first->right, RIGHT, false);
+	}
+	return result;
 }

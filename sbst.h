@@ -3,7 +3,7 @@
 
 #include <cstddef>
 #include <string>
-
+#include <unordered_set>
 
 class SBST {
 
@@ -25,6 +25,7 @@ public:
 	SBST(const std::string& text);
 	~SBST();
 	Node* search(const std::string& prefix);
+	std::unordered_set<size_t> findAllOccurrences(const std::string& text);
 
 	void print();
 
@@ -41,6 +42,8 @@ private:
 	size_t longestCommonPrefix(const std::string& prefix, std::size_t index, std::size_t m_i);
 	Details find(const std::string& prefix, bool searching);
 	void freeTree(Node* curr);
+	void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
+	                        SBST::Node* curr, Direction sideFromFound, bool matchAll);
 
 
 	Node* root;
