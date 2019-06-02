@@ -31,7 +31,7 @@ SAVL::SAVL(const string& text, bool allWords): root(nullptr), text(text) {
 vector<size_t> SAVL::getIndices(const string& text) {
         vector<size_t> indices;
         for (size_t i = 0; i < text.length() - 1; i++) {
-                if (text[i] == ' ') indices.push_back(i + 1);
+                if (text[i] == ' ' || text[i] == '\n') indices.push_back(i + 1);
         }
         return indices;
 }
