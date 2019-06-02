@@ -2,7 +2,7 @@
 
 using std::string;
 
-SA::SA(const string& text) : text(text) {
+SA::SA(const string& text, bool ignoreThis) : text(text) {
   suffix_array = (int *)malloc(text.length() * sizeof(int));
   divsufsort((unsigned char *)text.c_str(), suffix_array, text.length());
 }

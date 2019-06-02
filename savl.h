@@ -65,6 +65,11 @@ class SAVL {
 
   Node* root;
   std::string text;
+
+
+  // Fun with C++: delete copy constructor and assignment operator
+  SAVL(SAVL const &) = delete;
+  void operator=(SAVL const &) = delete;
 };
 
 #endif

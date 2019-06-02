@@ -1,6 +1,7 @@
 #include <iostream>
 #include "sbst.h"
 #include "savl.h"
+#include "sa.h"
 #include "Timer.h"
 #include <functional>
 #include <algorithm>
@@ -8,6 +9,7 @@
 #include <vector>
 #include <unistd.h>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -55,9 +57,10 @@ void time_findAll(Tree& tree, const vector<string>& words, const string& vecName
   cout << "    --> Time: " << getAverage(times) << endl << endl;
 }
 
-void time_findAll_both(SBST& sbst, SAVL& savl, const vector<string>& words, const string& vecName) {
+void time_findAll_all(SBST& sbst, SAVL& savl, SA& sa, const vector<string>& words, const string& vecName) {
   time_findAll(sbst, words, vecName);
   time_findAll(savl, words, vecName);
+  time_findAll(sa, words, vecName);
 }
 
 template <typename Tree>
@@ -76,9 +79,10 @@ void time_constructor(const string& text, bool spacesSplit) {
 
 }
 
-void time_constructor_both(const string& text, bool spacesSplit = false) {
+void time_constructor_all(const string& text, bool spacesSplit = false) {
   time_constructor<SBST>(text, spacesSplit);
   time_constructor<SAVL>(text, spacesSplit);
+  time_constructor<SA>(text, false);
 }
 
 
@@ -99,9 +103,10 @@ void time_findIndex(Tree& tree, const vector<string>& words, const string& vecNa
   }
 
   cout << "    --> Time: " << getAverage(times) << endl << endl;
-
 }
 
+// deliberately doesn't do SA because SA findIndex runtime is 
+// same as findAllOccurrences
 void time_findIndex_both(SBST& sbst, SAVL& savl, const vector<string>& words, const string& vecName) {
   time_findIndex(sbst, words, vecName);
   time_findIndex(savl, words, vecName);
@@ -117,6 +122,60 @@ void printEndTest(const string& testName) {
   cout << "--------------------------------------" << endl << endl;
 }
 
+vector<string> getFileContentsOf(string filename) {
+  vector<string> result;
+  ifstream input(filename);
+  for (string line; getline(input, line); ) {
+    result.push_back(line);
+  }
+  return result;
+}
+
+vector<string> getGoodSequencesFrom(const string& content) {
+  const size_t numWords = 200;
+  vector<string> result;
+  result.reserve(numWords);
+
+  for (size_t i = 0; i < numWords; i++) {
+    int randomStart = randomInteger(0, content.length() - 3);
+    int randomLength = randomInteger(10, 100);
+    // substr will truncate if length is too large. 
+    string random = content.substr(randomStart, randomLength);
+    result.push_back(random);
+  }
+  return result;
+}
+
+string generateRandomDNAString() {
+  static string chars = "ACTG";
+
+  size_t len = randomInteger(10, 100);
+
+  ostringstream out;
+  for (size_t i = 0; i < len; i++) {
+    out << chars[rand() % chars.length()];
+  }
+
+  return out.str();
+
+}
+
+vector<string> getRandomDNAStrings(SAVL& savl) {
+  const size_t numWords = 200;
+  const size_t kNotFound = -1;
+  vector<string> result;
+  result.reserve(numWords);
+
+  while (result.size() < numWords) {
+    string random = generateRandomDNAString();
+    if (savl.findIndex(random) == kNotFound) {
+      result.push_back(random);
+    }
+  }
+
+  return result;
+}
+
 // *******************************************************
 // ******* BEGIN test cases, each in 1 function **********
 // *******************************************************
@@ -125,13 +184,14 @@ void simpleDNATest() {
   const string testName = "Simple DNA Test";
   printBeginTest(testName);
 
-  time_constructor_both("CAATCACGGTCGGAC");
+  time_constructor_all("CAATCACGGTCGGAC");
 
   SBST sbst("CAATCACGGTCGGAC");
   SAVL savl("CAATCACGGTCGGAC");
+  SA   sa  ("CAATCACGGTCGGAC");
 
-  time_findAll_both(sbst, savl, {"A"},  "one element A");
-  time_findAll_both(sbst, savl, {"GG"}, "one element G");
+  time_findAll_all(sbst, savl, sa, {"A"},  "one element A");
+  time_findAll_all(sbst, savl, sa, {"GG"}, "one element G");
 
   time_findIndex_both(sbst, savl, {"CA"}, "one element CA");
 
@@ -146,26 +206,69 @@ void hugeAlphabetTest() {
   string content((std::istreambuf_iterator<char>(ifs)),
                    (std::istreambuf_iterator<char>()));
 
-  time_constructor_both(content, true);
+  time_constructor_all(content, true);
 
   SBST sbst(content, true);
   SAVL savl(content, true);
+  SA   sa  (content, false);
+
+  vector<string> fakeWords = getFileContentsOf("fake_words.txt");
+  time_findAll_all(sbst, savl, sa, fakeWords, "Fake Words");
+  vector<string> popularWords = getFileContentsOf("alphabet.txt"); // 1000 most popular word file
+  time_findAll_all(sbst, savl, sa, popularWords, "1000 Most Popular Words");
 
   printEndTest(testName);
 
 }
 
-void hugeDNATest() {
-  const string testName = "Huge Tests";
+void prejudiceTest() {
+  const string testName = "Prejudice Tests";
   printBeginTest(testName);
 
-  ifstream ifs("huge_alphabet.txt");
+  ifstream ifs("prideprejudice.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
                    (std::istreambuf_iterator<char>()));
+
+  time_constructor_all(content, true);
+
+  SBST sbst(content, true);
+  SAVL savl(content, true);
+  SA   sa  (content);
+
+  vector<string> fakeWords = getFileContentsOf("fake_words.txt");
+  time_findAll_all(sbst, savl, sa, fakeWords, "Fake Words");
+  vector<string> popularWords = getFileContentsOf("alphabet.txt"); // 1000 most popular word file
+  time_findAll_all(sbst, savl, sa, popularWords, "1000 Most Popular Words");
+
+  printEndTest(testName);
+}
+
+void hugeDNATest() {
+  const string testName = "Huge DNA Tests";
+  printBeginTest(testName);
+
+  ifstream ifs("dna.txt");
+  string content((std::istreambuf_iterator<char>(ifs)),
+                   (std::istreambuf_iterator<char>()));
+
+  time_constructor_all(content, false); // TODO should this be true?
+
+  SBST sbst(content);
+  SAVL savl(content);
+  SA   sa  (content);
+
+  vector<string> goodWords = getGoodSequencesFrom(content);
+  time_findAll_all(sbst, savl, sa, goodWords, "Sequences that are present");
+  vector<string> badWords  = getRandomDNAStrings(savl);
+  time_findAll_all(sbst, savl, sa, goodWords, "Sequences that are NOT present");
+
+  printEndTest(testName);
 }
 
 void doTimedTests() {
   simpleDNATest();
+  prejudiceTest();
+  hugeDNATest();
   hugeAlphabetTest();
 }
 

@@ -10,7 +10,7 @@ class SA {
 
   public:
 
-  SA(const std::string& text);
+  SA(const std::string& text, bool ignoreThis = false);
   ~SA();
   size_t findAllOccurrences(const std::string& pattern);
   std::string getName();
@@ -20,6 +20,8 @@ class SA {
   private:
   std::string text;
   int *suffix_array;
+  SA(SA const &) = delete;
+  void operator=(SA const &) = delete;
 };
 
 #endif

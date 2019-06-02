@@ -54,6 +54,10 @@ private:
 
 	Node* root;
 	std::string text;
+
+
+  SBST(SBST const &) = delete;
+  void operator=(SBST const &) = delete;
 };
 
 #endif
