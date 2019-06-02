@@ -7,6 +7,7 @@
 #include <iterator>
 #include <vector>
 #include <unistd.h>
+#include <fstream>
 
 using namespace std;
 
@@ -15,11 +16,18 @@ void doCorrectnessTests();
 
 // Constants
 const size_t kNotFound = -1;
-const size_t kNumRepeats = 20;
+const size_t kNumRepeats = 1;
 
 // *************************************************************************************
 // *************************** BEGIN section for timed tests ***************************
 // *************************************************************************************
+
+int randomInteger(int start, int end) {
+  std::random_device rd; // obtain a random number from hardware
+  std::mt19937 eng(rd()); // seed the generator
+  std::uniform_int_distribution<> distr(start, end); // define the range
+  return distr(eng);
+}
 
 
 template <typename T>
@@ -53,27 +61,24 @@ void time_findAll_both(SBST& sbst, SAVL& savl, const vector<string>& words, cons
 }
 
 template <typename Tree>
-void time_constructor(const string& text) {
+void time_constructor(const string& text, bool spacesSplit) {
   Tree nameExtractor("foo");
-  cout << "Timing constructor on " << nameExtractor.getName() << " using text = \"" << text << "\"" << endl;
+  cout << "Timing constructor on " << nameExtractor.getName() << endl;
   std::vector<std::uint64_t> times;
   times.reserve(kNumRepeats);
 
-  for (size_t i = 0; i < kNumRepeats; i++) {
-    Timer timmy;  
-    timmy.start();
-    Tree tree(text);
-    timmy.stop();
-    times.push_back(timmy.elapsed());
-  }
+  Timer timmy;  
+  timmy.start();
+  Tree tree(text, spacesSplit);
+  timmy.stop();
 
-  cout << "    --> Time: " << getAverage(times) << endl << endl;
+  cout << "    --> Time: " << timmy.elapsed() << endl << endl;
 
 }
 
-void time_constructor_both(const string& text) {
-  time_constructor<SBST>(text);
-  time_constructor<SAVL>(text);
+void time_constructor_both(const string& text, bool spacesSplit = false) {
+  time_constructor<SBST>(text, spacesSplit);
+  time_constructor<SAVL>(text, spacesSplit);
 }
 
 
@@ -112,25 +117,56 @@ void printEndTest(const string& testName) {
   cout << "--------------------------------------" << endl << endl;
 }
 
+// *******************************************************
+// ******* BEGIN test cases, each in 1 function **********
+// *******************************************************
+
 void simpleDNATest() {
   const string testName = "Simple DNA Test";
   printBeginTest(testName);
 
   time_constructor_both("CAATCACGGTCGGAC");
 
-  SAVL savl("CAATCACGGTCGGAC");
   SBST sbst("CAATCACGGTCGGAC");
+  SAVL savl("CAATCACGGTCGGAC");
 
   time_findAll_both(sbst, savl, {"A"},  "one element A");
-  time_findAll_both(sbst, savl, {"GG"}, "one element G" );
+  time_findAll_both(sbst, savl, {"GG"}, "one element G");
 
   time_findIndex_both(sbst, savl, {"CA"}, "one element CA");
 
   printEndTest(testName);
 }
 
+void hugeAlphabetTest() {
+  const string testName = "Huge Alphabet Tests";
+  printBeginTest(testName);
+
+  ifstream ifs("huge_alphabet.txt");
+  string content((std::istreambuf_iterator<char>(ifs)),
+                   (std::istreambuf_iterator<char>()));
+
+  time_constructor_both(content, true);
+
+  SBST sbst(content, true);
+  SAVL savl(content, true);
+
+  printEndTest(testName);
+
+}
+
+void hugeDNATest() {
+  const string testName = "Huge Tests";
+  printBeginTest(testName);
+
+  ifstream ifs("huge_alphabet.txt");
+  string content((std::istreambuf_iterator<char>(ifs)),
+                   (std::istreambuf_iterator<char>()));
+}
+
 void doTimedTests() {
   simpleDNATest();
+  hugeAlphabetTest();
 }
 
 int main() {

@@ -261,8 +261,8 @@ void SAVL::postorder(SAVL::Node* p, int indent) {
 SAVL::Details SAVL::find(const string& prefix, bool searching) {
 	size_t llcp = 0, rlcp = 0;
 	Node** i = &root;
-	Direction childDir;
-	Node* parent;
+	Direction childDir = UNSET; // sentinel
+	Node* parent = nullptr;     // sentinel
 	while (*i) {
 		parent = *i;
 		if ((*i)->m > max(llcp, rlcp)) {
