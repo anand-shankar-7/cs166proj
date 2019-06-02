@@ -48,8 +48,6 @@ private:
 	void freeTree(Node* curr);
 	void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
 	                        SBST::Node* curr, Direction sideFromFound, bool matchAll);
-	std::vector<size_t> getIndices(const std::string& text);
-
 
 
 	Node* root;

@@ -9,9 +9,8 @@ SBST::SBST(const string& text, bool onlyWords): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
 	if (onlyWords) {
-		vector<size_t> indices = getIndices(text);
-		for (size_t index : indices) {
-			insertIndex(index);
+		for (size_t i = 0; i < text.length() - 1; i++) {
+			if (text[i] == ' ' || text[i] == '\n') insertIndex(i + 1);
 		}
 	} else {
 		for (size_t i = 1; i < text.length(); i++) {
@@ -29,14 +28,6 @@ size_t SBST::findIndex(const std::string& prefix) {
 
 string SBST::getName() { 
   return "SBST";
-}
-
-vector<size_t> SBST::getIndices(const string& text) {
-	vector<size_t> indices;
-	for (size_t i = 0; i < text.length() - 1; i++) {
-		if (text[i] == ' ' || text[i] == '\n') indices.push_back(i + 1);
-	}
-	return indices; 
 }
 
 void SBST::insertIndex(size_t index) {

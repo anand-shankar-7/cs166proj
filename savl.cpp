@@ -16,9 +16,8 @@ SAVL::SAVL(const string& text, bool allWords): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
 	if (allWords) {
-		vector<size_t> indices = getIndices(text);
-		for (size_t index: indices) {
-			insertIndex(index);
+		for (size_t i = 0; i < text.length() - 1; i++) {
+			if (text[i] == ' ' || text[i] == '\n') insertIndex(i + 1);
 		}
 	} else {
 		for (size_t i = 1; i < text.length(); i++) {
@@ -36,14 +35,6 @@ size_t SAVL::findIndex(const std::string& prefix) {
 
 std::string SAVL::getName() {
   return "SAVL";
-}
-
-vector<size_t> SAVL::getIndices(const string& text) {
-        vector<size_t> indices;
-        for (size_t i = 0; i < text.length() - 1; i++) {
-                if (text[i] == ' ' || text[i] == '\n') indices.push_back(i + 1);
-        }
-        return indices;
 }
 
 void SAVL::insertIndex(size_t index) {

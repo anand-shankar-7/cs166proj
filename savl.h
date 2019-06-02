@@ -60,7 +60,6 @@ class SAVL {
   void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
       SAVL::Node* curr, Direction sideFromFound, bool matchAll);
   void insertIndex(std::size_t index);
-  std::vector<size_t> getIndices(const std::string& text);
 
 
   Node* root;
