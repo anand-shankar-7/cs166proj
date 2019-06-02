@@ -13,24 +13,25 @@
 
 using namespace std;
 
-// Fn prototype
+// Function prototype
 void doCorrectnessTests();
 
 // Constants
 const size_t kNotFound = -1;
-const size_t kNumRepeats = 1;
 
 // *************************************************************************************
 // *************************** BEGIN section for timed tests ***************************
 // *************************************************************************************
 
+// BEGIN utility/testing functions for timed tests
+
+// Taken from StackOverflow
 int randomInteger(int start, int end) {
   std::random_device rd; // obtain a random number from hardware
   std::mt19937 eng(rd()); // seed the generator
   std::uniform_int_distribution<> distr(start, end); // define the range
   return distr(eng);
 }
-
 
 template <typename T>
 double getAverage(const vector<T>& times) {
@@ -39,19 +40,17 @@ double getAverage(const vector<T>& times) {
 
 template <typename Tree>
 void time_findAll(Tree& tree, const vector<string>& words, const string& vecName) {
-  cout << "Running find all test on " << tree.getName() << " using list \"" << vecName << "\"" << endl;
+  cout << "Running find all test on " << Tree::getName() << " using list \"" << vecName << "\"" << endl;
 
   std::vector<std::uint64_t> times;
-  times.reserve(kNumRepeats * words.size());
+  times.reserve(words.size());
 
   for (const string& word: words) {
-    for (size_t i = 0; i < kNumRepeats; i++) {
-      Timer timmy;  
-      timmy.start();
-      (void) tree.findAllOccurrences(word);
-      timmy.stop();
-      times.push_back(timmy.elapsed());
-    }
+    Timer timmy;  
+    timmy.start();
+    (void) tree.findAllOccurrences(word);
+    timmy.stop();
+    times.push_back(timmy.elapsed());
   }
 
   cout << "    --> Time: " << getAverage(times) << endl << endl;
@@ -65,10 +64,7 @@ void time_findAll_all(SBST& sbst, SAVL& savl, SA& sa, const vector<string>& word
 
 template <typename Tree>
 void time_constructor(const string& text, bool spacesSplit) {
-  Tree nameExtractor("foo");
-  cout << "Timing constructor on " << nameExtractor.getName() << endl;
-  std::vector<std::uint64_t> times;
-  times.reserve(kNumRepeats);
+  cout << "Timing constructor on " << Tree::getName() << endl;
 
   Timer timmy;  
   timmy.start();
@@ -87,28 +83,25 @@ void time_constructor_all(const string& text, bool spacesSplit = false) {
   time_constructor<SA>(text, false);
 }
 
-
 template <typename Tree>
 void time_findIndex(Tree& tree, const vector<string>& words, const string& vecName) {
-  cout << "Running find index test on " << tree.getName() << " using list \"" << vecName << "\"" << endl;
+  cout << "Running find index test on " << Tree::getName() << " using list \"" << vecName << "\"" << endl;
   std::vector<std::uint64_t> times;
-  times.reserve(kNumRepeats * words.size());
+  times.reserve(words.size());
 
   for (const string& word: words) {
-    for (size_t i = 0; i < kNumRepeats; i++) {
-      Timer timmy;  
-      timmy.start();
-      (void) tree.findIndex(word);
-      timmy.stop();
-      times.push_back(timmy.elapsed());
-    }
+    Timer timmy;  
+    timmy.start();
+    (void) tree.findIndex(word);
+    timmy.stop();
+    times.push_back(timmy.elapsed());
   }
 
   cout << "    --> Time: " << getAverage(times) << endl << endl;
 }
 
-// deliberately doesn't do SA because SA findIndex runtime is 
-// same as findAllOccurrences
+// deliberately doesn't do findIndex on suffix array because
+// SA findIndex runtime is the same as that of findAllOccurrences
 void time_findIndex_both(SBST& sbst, SAVL& savl, const vector<string>& words, const string& vecName) {
   time_findIndex(sbst, words, vecName);
   time_findIndex(savl, words, vecName);
@@ -133,6 +126,7 @@ vector<string> getFileContentsOf(string filename) {
   return result;
 }
 
+// Used for huge DNA test.
 vector<string> getGoodSequencesFrom(const string& content) {
   const size_t numWords = 200;
   vector<string> result;
@@ -148,20 +142,20 @@ vector<string> getGoodSequencesFrom(const string& content) {
   return result;
 }
 
+// Used for huge DNA test.
 string generateRandomDNAString() {
   static string chars = "ACTG";
-
   size_t len = randomInteger(10, 100);
-
   ostringstream out;
   for (size_t i = 0; i < len; i++) {
     out << chars[rand() % chars.length()];
   }
-
   return out.str();
-
 }
 
+// Used for huge DNA test. All returned
+// strings are NOT present in the tree 
+// that's passed in.
 vector<string> getRandomDNAStrings(SAVL& savl) {
   const size_t numWords = 200;
   const size_t kNotFound = -1;
@@ -206,7 +200,7 @@ void hugeDictionaryTest() {
 
   ifstream ifs("dictionary.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
-                   (std::istreambuf_iterator<char>()));
+      (std::istreambuf_iterator<char>()));
 
   time_constructor_all(content, true);
 
@@ -220,7 +214,6 @@ void hugeDictionaryTest() {
   time_findAll_all(sbst, savl, sa, popularWords, "1000 Most Popular Words");
 
   printEndTest(testName);
-
 }
 
 void prejudiceTest() {
@@ -229,7 +222,7 @@ void prejudiceTest() {
 
   ifstream ifs("prideprejudice.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
-                   (std::istreambuf_iterator<char>()));
+      (std::istreambuf_iterator<char>()));
 
   time_constructor_all(content, true);
 
@@ -251,7 +244,7 @@ void hugeDNATest() {
 
   ifstream ifs("dna.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
-                   (std::istreambuf_iterator<char>()));
+      (std::istreambuf_iterator<char>()));
 
   time_constructor_all(content, false);
 
@@ -259,10 +252,10 @@ void hugeDNATest() {
   SAVL savl(content);
   SA   sa  (content);
 
-  vector<string> goodWords = getGoodSequencesFrom(content);
-  time_findAll_all(sbst, savl, sa, goodWords, "Sequences that are present");
-  vector<string> badWords  = getRandomDNAStrings(savl);
-  time_findAll_all(sbst, savl, sa, goodWords, "Sequences that are NOT present");
+  vector<string> sequencesPresent = getGoodSequencesFrom(content);
+  time_findAll_all(sbst, savl, sa, sequencesPresent, "Sequences that are present");
+  vector<string> sequencesNotPresent = getRandomDNAStrings(savl);
+  time_findAll_all(sbst, savl, sa, sequencesNotPresent, "Sequences that are NOT present");
 
   printEndTest(testName);
 }
@@ -273,9 +266,11 @@ void smallDictionaryTest() {
 
   ifstream ifs("popular_words.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
-                 (std::istreambuf_iterator<char>()));
+      (std::istreambuf_iterator<char>()));
 
   time_constructor_all(content, false);
+
+  printEndTest(testName);
 }
 
 
@@ -329,7 +324,7 @@ void timeOperation(const string& msg, const std::function<void()>& func) {
 
 
 void doCorrectnessTests() {
-    {
+  {
     SAVL tree("CAATCACGGTCGGAC");
     doSearch(tree, "CGGA", 10);
     doSearch(tree, "AC", 13); // could also be 5 and others

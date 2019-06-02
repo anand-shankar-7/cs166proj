@@ -22,50 +22,54 @@ PASS
 BEGIN tests for Small Dictionary Tests
 
 Timing constructor on SBST
-    --> Time: 28027701
+    --> Time: 5449551
 
 Timing constructor on SAVL
-    --> Time: 8078745
+    --> Time: 1567560
 
 Timing constructor on SA
-    --> Time: 1028170
+    --> Time: 415041
+
+END tests for Small Dictionary Tests
+
+--------------------------------------
 
 --------------------------------------
 
 BEGIN tests for Simple DNA Test
 
 Timing constructor on SBST
-    --> Time: 3758
+    --> Time: 1744
 
 Timing constructor on SAVL
-    --> Time: 5402
+    --> Time: 2231
 
 Timing constructor on SA
-    --> Time: 394969
+    --> Time: 204091
 
 Running find all test on SBST using list "one element A"
-    --> Time: 2948
+    --> Time: 1628
 
 Running find all test on SAVL using list "one element A"
-    --> Time: 1992
+    --> Time: 740
 
 Running find all test on SA using list "one element A"
-    --> Time: 1370
+    --> Time: 733
 
 Running find all test on SBST using list "one element G"
-    --> Time: 3063
+    --> Time: 630
 
 Running find all test on SAVL using list "one element G"
-    --> Time: 1361
+    --> Time: 449
 
 Running find all test on SA using list "one element G"
-    --> Time: 499
+    --> Time: 212
 
 Running find index test on SBST using list "one element CA"
-    --> Time: 281
+    --> Time: 101
 
 Running find index test on SAVL using list "one element CA"
-    --> Time: 234
+    --> Time: 93
 
 END tests for Simple DNA Test
 
@@ -76,31 +80,31 @@ END tests for Simple DNA Test
 BEGIN tests for Prejudice Tests
 
 Timing constructor on SBST
-    --> Time: 1479502834
+    --> Time: 1499540530
 
 Timing constructor on SAVL
-    --> Time: 1476791540
+    --> Time: 1510819293
 
 Timing constructor on SA
-    --> Time: 30614015
+    --> Time: 30640116
 
 Running find all test on SBST using list "Fake Words"
-    --> Time: 581.979
+    --> Time: 590.957
 
 Running find all test on SAVL using list "Fake Words"
-    --> Time: 462.869
+    --> Time: 517.238
 
 Running find all test on SA using list "Fake Words"
-    --> Time: 334.288
+    --> Time: 351.015
 
 Running find all test on SBST using list "1000 Most Popular Words"
-    --> Time: 16266.5
+    --> Time: 15896.9
 
 Running find all test on SAVL using list "1000 Most Popular Words"
-    --> Time: 17719.8
+    --> Time: 17991.2
 
 Running find all test on SA using list "1000 Most Popular Words"
-    --> Time: 434.947
+    --> Time: 434.367
 
 END tests for Prejudice Tests
 
@@ -111,31 +115,31 @@ END tests for Prejudice Tests
 BEGIN tests for Huge DNA Tests
 
 Timing constructor on SBST
-    --> Time: 16294923929
+    --> Time: 16849288236
 
 Timing constructor on SAVL
-    --> Time: 17391905504
+    --> Time: 17016465349
 
 Timing constructor on SA
-    --> Time: 64637921
+    --> Time: 58548210
 
 Running find all test on SBST using list "Sequences that are present"
-    --> Time: 1903.32
+    --> Time: 1852.62
 
 Running find all test on SAVL using list "Sequences that are present"
-    --> Time: 1628.71
+    --> Time: 1628.41
 
 Running find all test on SA using list "Sequences that are present"
-    --> Time: 788.38
+    --> Time: 844.795
 
 Running find all test on SBST using list "Sequences that are NOT present"
-    --> Time: 1018.22
+    --> Time: 63.525
 
 Running find all test on SAVL using list "Sequences that are NOT present"
-    --> Time: 935.725
+    --> Time: 60.005
 
 Running find all test on SA using list "Sequences that are NOT present"
-    --> Time: 504.255
+    --> Time: 62.02
 
 END tests for Huge DNA Tests
 
@@ -146,31 +150,31 @@ END tests for Huge DNA Tests
 BEGIN tests for Huge Dictionary Tests
 
 Timing constructor on SBST
-    --> Time: 59424578836
+    --> Time: 59177090874
 
 Timing constructor on SAVL
-    --> Time: 27166266639
+    --> Time: 27923802020
 
 Timing constructor on SA
-    --> Time: 153965477
+    --> Time: 158403985
 
 Running find all test on SBST using list "Fake Words"
-    --> Time: 65529
+    --> Time: 66238.3
 
 Running find all test on SAVL using list "Fake Words"
-    --> Time: 767.922
+    --> Time: 786.859
 
 Running find all test on SA using list "Fake Words"
-    --> Time: 668.957
+    --> Time: 667.059
 
 Running find all test on SBST using list "1000 Most Popular Words"
-    --> Time: 80968.5
+    --> Time: 82163.1
 
 Running find all test on SAVL using list "1000 Most Popular Words"
-    --> Time: 12630.6
+    --> Time: 12684.7
 
 Running find all test on SA using list "1000 Most Popular Words"
-    --> Time: 750.564
+    --> Time: 728.113
 
 END tests for Huge Dictionary Tests
 

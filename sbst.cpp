@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-
 SBST::SBST(const string& text, bool onlyWords): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
@@ -17,7 +16,6 @@ SBST::SBST(const string& text, bool onlyWords): root(nullptr), text(text) {
 			insertIndex(i);
 		}
 	}
-  
 }
 
 size_t SBST::findIndex(const std::string& prefix) {
@@ -52,28 +50,6 @@ void SBST::freeTree(SBST::Node* curr) {
 
 SBST::~SBST() {
 	freeTree(root);
-}
-
-void SBST::print() {
-	postorder(root, 0);
-	cout << flush << endl;
-}
-
-void SBST::postorder(SBST::Node* p, int indent) {
-    if(p != nullptr) {
-        if(p->right) {
-            postorder(p->right, indent+4);
-        }
-        if (indent) {
-            std::cout << std::setw(indent) << ' ';
-        }
-        if (p->right) std::cout<<" /\n" << std::setw(indent) << ' ';
-        std::cout<< p->index << "\n ";
-        if(p->left) {
-            std::cout << std::setw(indent) << ' ' <<" \\\n";
-            postorder(p->left, indent+4);
-        }
-    }
 }
 
 SBST::Details SBST::find(const string& prefix, bool searching) {
