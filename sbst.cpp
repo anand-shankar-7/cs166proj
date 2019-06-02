@@ -21,6 +21,16 @@ SBST::SBST(const string& text, bool onlyWords): root(nullptr), text(text) {
   
 }
 
+size_t SBST::findIndex(const std::string& prefix) {
+	Node* found = search(prefix);
+	if (found) return found->index;
+	return -1;
+}
+
+string SBST::getName() { 
+  return "SBST";
+}
+
 vector<size_t> SBST::getIndices(const string& text) {
 	vector<size_t> indices;
 	for (size_t i = 0; i < text.length() - 1; i++) {
