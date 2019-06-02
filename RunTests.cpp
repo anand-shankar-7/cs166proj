@@ -5,6 +5,7 @@
 #include <functional>
 #include <algorithm>
 #include <iterator>
+#include <vector>
 #include <unistd.h>
 
 using namespace std;
@@ -26,27 +27,29 @@ double getAverage(const vector<T>& times) {
   return 1.0 * std::accumulate(times.begin(), times.end(), 0) / times.size();
 }
 
-template <typename Tree> 
-void time_findAll(Tree& tree, const string& text) {
-  cout << "Running find all test on " << tree.getName() << " using text = \"" << text << "\"" << endl;
+template <typename Tree>
+void time_findAll(Tree& tree, const vector<string>& words, const string& vecName) {
+  cout << "Running find all test on " << tree.getName() << " using list \"" << vecName << "\"" << endl;
 
   std::vector<std::uint64_t> times;
-  times.reserve(kNumRepeats);
+  times.reserve(kNumRepeats * words.size());
 
-  for (size_t i = 0; i < kNumRepeats; i++) {
-    Timer timmy;  
-    timmy.start();
-    auto result = tree.findAllOccurrences(text);
-    timmy.stop();
-    times.push_back(timmy.elapsed());
+  for (const string& word: words) {
+    for (size_t i = 0; i < kNumRepeats; i++) {
+      Timer timmy;  
+      timmy.start();
+      (void) tree.findAllOccurrences(word);
+      timmy.stop();
+      times.push_back(timmy.elapsed());
+    }
   }
 
   cout << "    --> Time: " << getAverage(times) << endl << endl;
 }
 
-void time_findAll_both(SBST& sbst, SAVL& savl, const string& text) {
-  time_findAll(sbst, text);
-  time_findAll(savl, text);
+void time_findAll_both(SBST& sbst, SAVL& savl, const vector<string>& words, const string& vecName) {
+  time_findAll(sbst, words, vecName);
+  time_findAll(savl, words, vecName);
 }
 
 template <typename Tree>
@@ -75,26 +78,28 @@ void time_constructor_both(const string& text) {
 
 
 template <typename Tree>
-void time_search(Tree& tree, const string& prefix) {
-  cout << "Timing search on " << tree.getName() << " using prefix = \"" << prefix << "\"" << endl;
+void time_findIndex(Tree& tree, const vector<string>& words, const string& vecName) {
+  cout << "Running find index test on " << tree.getName() << " using list \"" << vecName << "\"" << endl;
   std::vector<std::uint64_t> times;
-  times.reserve(kNumRepeats);
-  
-  for (size_t i = 0; i < kNumRepeats; i++) {
-    Timer timmy;  
-    timmy.start();
-    tree.findIndex(prefix);
-    timmy.stop();
-    times.push_back(timmy.elapsed());
+  times.reserve(kNumRepeats * words.size());
+
+  for (const string& word: words) {
+    for (size_t i = 0; i < kNumRepeats; i++) {
+      Timer timmy;  
+      timmy.start();
+      (void) tree.findIndex(word);
+      timmy.stop();
+      times.push_back(timmy.elapsed());
+    }
   }
 
   cout << "    --> Time: " << getAverage(times) << endl << endl;
 
 }
 
-void time_search_both(SBST& sbst, SAVL& savl, const string& prefix) {
-  time_search(sbst, prefix);
-  time_search(savl, prefix);
+void time_findIndex_both(SBST& sbst, SAVL& savl, const vector<string>& words, const string& vecName) {
+  time_findIndex(sbst, words, vecName);
+  time_findIndex(savl, words, vecName);
 }
 
 void printBeginTest(const string& testName) {
@@ -116,10 +121,10 @@ void simpleDNATest() {
   SAVL savl("CAATCACGGTCGGAC");
   SBST sbst("CAATCACGGTCGGAC");
 
-  time_findAll_both(sbst, savl,  "A");
-  time_findAll_both(sbst, savl, "GG");
+  time_findAll_both(sbst, savl, {"A"},  "one element A");
+  time_findAll_both(sbst, savl, {"GG"}, "one element G" );
 
-  time_search_both(sbst, savl, "CA");
+  time_findIndex_both(sbst, savl, {"CA"}, "one element CA");
 
   printEndTest(testName);
 }
