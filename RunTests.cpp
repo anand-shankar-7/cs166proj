@@ -72,8 +72,10 @@ void time_constructor(const string& text, bool spacesSplit) {
 
   Timer timmy;  
   timmy.start();
-  Tree tree(text, spacesSplit);
+  Tree* tree = new Tree(text, spacesSplit); // pointer forces construction and controls destruction
   timmy.stop();
+
+  delete tree;
 
   cout << "    --> Time: " << timmy.elapsed() << endl << endl;
 
@@ -251,7 +253,7 @@ void hugeDNATest() {
   string content((std::istreambuf_iterator<char>(ifs)),
                    (std::istreambuf_iterator<char>()));
 
-  time_constructor_all(content, false); // TODO should this be true?
+  time_constructor_all(content, false);
 
   SBST sbst(content);
   SAVL savl(content);
@@ -265,7 +267,21 @@ void hugeDNATest() {
   printEndTest(testName);
 }
 
+void smallDictionaryTest() {
+  const string testName = "Small Dictionary Tests";
+  printBeginTest(testName);
+
+  ifstream ifs("popular_words.txt");
+  string content((std::istreambuf_iterator<char>(ifs)),
+                 (std::istreambuf_iterator<char>()));
+  cout << content << endl;
+
+  time_constructor_all(content, false);
+}
+
+
 void doTimedTests() {
+  smallDictionaryTest();
   simpleDNATest();
   prejudiceTest();
   hugeDNATest();
