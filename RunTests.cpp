@@ -198,11 +198,11 @@ void simpleDNATest() {
   printEndTest(testName);
 }
 
-void hugeAlphabetTest() {
-  const string testName = "Huge Alphabet Tests";
+void hugeDictionaryTest() {
+  const string testName = "Huge Dictionary Tests";
   printBeginTest(testName);
 
-  ifstream ifs("huge_alphabet.txt");
+  ifstream ifs("dictionary.txt");
   string content((std::istreambuf_iterator<char>(ifs)),
                    (std::istreambuf_iterator<char>()));
 
@@ -214,7 +214,7 @@ void hugeAlphabetTest() {
 
   vector<string> fakeWords = getFileContentsOf("fake_words.txt");
   time_findAll_all(sbst, savl, sa, fakeWords, "Fake Words");
-  vector<string> popularWords = getFileContentsOf("alphabet.txt"); // 1000 most popular word file
+  vector<string> popularWords = getFileContentsOf("popular_words.txt");
   time_findAll_all(sbst, savl, sa, popularWords, "1000 Most Popular Words");
 
   printEndTest(testName);
@@ -237,7 +237,7 @@ void prejudiceTest() {
 
   vector<string> fakeWords = getFileContentsOf("fake_words.txt");
   time_findAll_all(sbst, savl, sa, fakeWords, "Fake Words");
-  vector<string> popularWords = getFileContentsOf("alphabet.txt"); // 1000 most popular word file
+  vector<string> popularWords = getFileContentsOf("popular_words.txt");
   time_findAll_all(sbst, savl, sa, popularWords, "1000 Most Popular Words");
 
   printEndTest(testName);
@@ -269,7 +269,7 @@ void doTimedTests() {
   simpleDNATest();
   prejudiceTest();
   hugeDNATest();
-  hugeAlphabetTest();
+  hugeDictionaryTest();
 }
 
 int main() {
