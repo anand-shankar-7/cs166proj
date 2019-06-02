@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <string>
 #include <unordered_set>
+#include <vector>
 
 class SBST {
 
@@ -22,7 +23,7 @@ public:
 	};
 
 
-	SBST(const std::string& text);
+	SBST(const std::string& text, bool onlyWords = false);
 	~SBST();
 	Node* search(const std::string& prefix);
 	std::unordered_set<size_t> findAllOccurrences(const std::string& text);
@@ -38,12 +39,15 @@ private:
 		size_t rlcp;
 	};
 
+	void insertIndex(std::size_t index);
 	void postorder(Node* root, int indent);
 	size_t longestCommonPrefix(const std::string& prefix, std::size_t index, std::size_t m_i);
 	Details find(const std::string& prefix, bool searching);
 	void freeTree(Node* curr);
 	void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
 	                        SBST::Node* curr, Direction sideFromFound, bool matchAll);
+	std::vector<size_t> getIndices(const std::string& text);
+
 
 
 	Node* root;

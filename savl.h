@@ -4,6 +4,7 @@
 #include <cstddef>
 #include <string>
 #include <unordered_set>
+#include <vector>
 
 class SAVL {
 
@@ -26,7 +27,7 @@ public:
         };
 
 
-        SAVL(const std::string& text);
+        SAVL(const std::string& text, bool addWords = false);
         ~SAVL();
         Node* search(const std::string& prefix);
         std::unordered_set<size_t> findAllOccurrences(const std::string& text);
@@ -55,6 +56,8 @@ private:
         Node* rotateRightLeft(Node* node);
         void findAllOccurrences(size_t textLen, std::unordered_set<size_t>& result,
                                 SAVL::Node* curr, Direction sideFromFound, bool matchAll);
+        void insertIndex(std::size_t index);
+        std::vector<size_t> getIndices(const std::string& text);
 
 
         Node* root;

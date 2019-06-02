@@ -9,89 +9,50 @@ using std::string;
 using std::max;
 using std::min;
 using std::flush;
+using std::vector;
 
 
-SAVL::SAVL(const string& text): root(nullptr), text(text) {
-	// Node* fourteen = new Node(13, 2, LEFT);
-	// Node* six = new Node(5, 1, LEFT, fourteen);
-	// Node* fifteen = new Node(14, 1, LEFT);
-	// Node* three = new Node(2, 1, RIGHT, six, fifteen);
-	// Node* two = new Node(1, 0, UNSET, nullptr, three);
-	// Node* thirteen = new Node(12, 1, LEFT);
-	// Node* twelve = new Node(11, 2, LEFT, thirteen);
-	// Node* nine = new Node(8, 1, RIGHT);
-	// Node* eight = new Node(7, 0, UNSET, twelve, nine);
-	// Node* eleven = new Node(10, 3, LEFT);
-	// Node* seven = new Node(6, 1, RIGHT, eleven, eight);
-	// Node* five = new Node(4, 2, RIGHT, nullptr, seven);
-	// Node* ten = new Node(9, 2, RIGHT);
-	// Node* four = new Node(3, 0, UNSET, five, ten);
-	// root = new Node(0, 0, UNSET, two, four);
-
-	// fourteen->parent = six;
-	// six->parent = three;
-	// fifteen->parent = three;
-	// three->parent = two;
-	// two->parent = root;
-	// root->parent = nullptr;
-	// thirteen->parent = twelve;
-	// twelve->parent = eight;
-	// nine->parent = eight;
-	// eight->parent = seven;
-	// eleven->parent = seven;
-	// seven->parent = five;
-	// five->parent = four;
-	// ten->parent = four;
-	// four->parent = root;
-
-
-
-	// Node* bottom = new Node(2, 4, RIGHT);
-	// Node* mid =    new Node(1, 2, LEFT, nullptr, bottom);
-	// Node* top =    new Node(0, 0, UNSET, mid, nullptr);
-
-	// root = top;
-
-	// mid->parent = top;
-	// bottom->parent = mid;
-	// Bal factors BEFORE ROTATION
-	// bottom->balance = 0;
-	// mid->balance = 0;
-	// top->balance = 1;
-
-	// rebalance(mid, -1);
-
-	// cout << "FOO" << endl;
-
-	// cout << "before rotate left" << endl;
-	// rotateRight(root);
-	// cout << "after rotate left" << endl;
-
+SAVL::SAVL(const string& text, bool allWords): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
-	for (size_t i = 1; i < text.length(); i++) {
-		// cout << "------- i = " << i << "---------" << endl;
-		// print();
-		// cout << "---------------------------" << endl;
-		Details det = find(text.substr(i), false);
-		size_t llcp = det.llcp;
-		size_t rlcp = det.rlcp;
-
-		Direction dir;
-		if (llcp == rlcp && llcp == 0) dir = UNSET;
-		else if (llcp > rlcp) dir = LEFT;
-		else dir = RIGHT;
-
-		cout << det.location << endl;
-		*(det.location) = new Node(i, max(llcp, rlcp), dir, nullptr, nullptr, det.parent);
-
-		if (det.childDir == LEFT) {
-			rebalance(det.parent, 1);
-		} else {
-			rebalance(det.parent, -1);
+	if (allWords) {
+		vector<size_t> indices = getIndices(text);
+		for (size_t index: indices) {
+			insertIndex(index);
+		}
+	} else {
+		for (size_t i = 1; i < text.length(); i++) {
+			insertIndex(i);
 		}
 	}
 
+}
+
+vector<size_t> SAVL::getIndices(const string& text) {
+        vector<size_t> indices;
+        for (size_t i = 0; i < text.length() - 1; i++) {
+                if (text[i] == ' ') indices.push_back(i + 1);
+        }
+        return indices;
+}
+
+void SAVL::insertIndex(size_t index) {
+	Details det = find(text.substr(index), false);
+	size_t llcp = det.llcp;
+	size_t rlcp = det.rlcp;
+
+	Direction dir;
+	if (llcp == rlcp && llcp == 0) dir = UNSET;
+	else if (llcp > rlcp) dir = LEFT;
+	else dir = RIGHT;
+
+	*(det.location) = new Node(index, max(llcp, rlcp), dir, nullptr, nullptr, det.parent);
+
+	if (det.childDir == LEFT) {
+		rebalance(det.parent, 1);
+	} else {
+		rebalance(det.parent, -1);
+	}
 }
 
 SAVL::Node* SAVL::rotateLeftRight(SAVL::Node* node) {

@@ -5,38 +5,41 @@
 using namespace std;
 
 
-SBST::SBST(const string& text): root(nullptr), text(text) {
-	// Node* fourteen = new Node(13, 2, LEFT);
-	// Node* six = new Node(5, 1, LEFT, fourteen);
-	// Node* fifteen = new Node(14, 1, LEFT);
-	// Node* three = new Node(2, 1, RIGHT, six, fifteen);
-	// Node* two = new Node(1, 0, UNSET, nullptr, three);
-	// Node* thirteen = new Node(12, 1, LEFT);
-	// Node* twelve = new Node(11, 2, LEFT, thirteen);
-	// Node* nine = new Node(8, 1, RIGHT);
-	// Node* eight = new Node(7, 0, UNSET, twelve, nine);
-	// Node* eleven = new Node(10, 3, LEFT);
-	// Node* seven = new Node(6, 1, RIGHT, eleven, eight);
-	// Node* five = new Node(4, 2, RIGHT, nullptr, seven);
-	// Node* ten = new Node(9, 2, RIGHT);
-	// Node* four = new Node(3, 0, UNSET, five, ten);
-	// root = new Node(0, 0, UNSET, two, four);
+SBST::SBST(const string& text, bool onlyWords): root(nullptr), text(text) {
 	root = new Node(0, 0, UNSET);
 
-	for (size_t i = 1; i < text.length(); i++) {
-		Details det = find(text.substr(i), false);
-		size_t llcp = det.llcp;
-		size_t rlcp = det.rlcp;
-
-		Direction dir;
-		if (llcp == rlcp && llcp == 0) dir = UNSET;
-		else if (llcp > rlcp) dir = LEFT;
-		else dir = RIGHT;
-
-		cout << det.location << endl;
-		*(det.location) = new Node(i, max(llcp, rlcp), dir);
+	if (onlyWords) {
+		vector<size_t> indices = getIndices(text);
+		for (size_t index : indices) {
+			insertIndex(index);
+		}
+	} else {
+		for (size_t i = 1; i < text.length(); i++) {
+			insertIndex(i);
+		}
 	}
+  
+}
 
+vector<size_t> SBST::getIndices(const string& text) {
+	vector<size_t> indices;
+	for (size_t i = 0; i < text.length() - 1; i++) {
+		if (text[i] == ' ') indices.push_back(i + 1);
+	}
+	return indices; 
+}
+
+void SBST::insertIndex(size_t index) {
+	Details det = find(text.substr(index), false);
+	size_t llcp = det.llcp;
+	size_t rlcp = det.rlcp;
+
+	Direction dir;
+	if (llcp == rlcp && llcp == 0) dir = UNSET;
+	else if (llcp > rlcp) dir = LEFT;
+	else dir = RIGHT;
+
+	*(det.location) = new Node(index, max(llcp, rlcp), dir);
 }
 
 void SBST::freeTree(SBST::Node* curr) {
